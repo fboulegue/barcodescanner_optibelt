@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <meta content="yes" name="apple-mobile-web-app-capable" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
+        <link href="style.css" rel="stylesheet" media="screen" type="text/css" />
+        <script src="javascript/functions.js" type="javascript"></script>
+        <title>Title of your page</title>
+        <meta content="keyword1,keyword2,keyword3" name="keywords" />
+        <meta content="Description of your page" name="description" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+        <meta charset="utf-8">
+
+            
+            <script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>
+            <script type="text/javascript" charset="utf-8" src="barcodescanner.js"></script>
+            <script type="text/javascript">
+                
+                function onBodyLoad()
+                {		
+                  //blub
+                }
+                
+                function onDeviceReady()
+                {
+                    // do your thing!
+                }
+                </script>
+            
+            <script>
+                // Scanner
+                function scannen() {
+                    window.plugins.barcodeScanner.scan(
+                                                       function(result) {
+                                                       if (result.cancelled)
+                                                       navigator.notification.alert("scann abgebrochen", "tea inc. Demo", "Cancel");
+                                                       else
+                                                       //alert("we got a barcode: " + result.text);
+                                                       document.getElementById("barcode").innerHTML = result.text;
+                                                       },
+                                                       function(error) {
+                                                       alert("scanning failed: " + error)
+                                                       }
+                                                       )}
+                </script>
+    </head>
+    
+    <body>
+        
+        <div id="topbar">
+            <div id="title">Optibelt Barcodescanner</div>
+        </div>
+        <div style="text-align:right; margin-top:-13px;">
+            <img src="iPad_Header.png" alt="" width="153" height="77" />
+        </div>
+        <div id="content">
+            <div style="text-align:center;"><a href="#" onClick="scannen()"><img src="barcode1.png" /></a></div>
+            <ul class="pageitem">
+                <li class="textbox">
+                    <span class="header">Barcode:</span>
+                    <div style="text-align:center;"><span id="barcode">Klicken Sie auf den Barcode...</span></div>
+                </li>
+            </ul>
+        </div>
+        <div id="footer">
+            <!-- Support iWebKit by sending us traffic; please keep this footer on your page, consider it a thank you for my work :-) -->
+            <a class="noeffect" href="http://www.teainc.me">Tea inc. | DemoApp |</a></div>
+        
+    </body>
+    
+</html>
